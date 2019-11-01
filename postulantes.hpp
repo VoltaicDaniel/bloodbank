@@ -22,6 +22,14 @@ public:
   string Cedula;
   string Correo;
   string Telefono;
+  string Direccion;
+  int TensionArterialsis;
+  int TensionArterialdias;
+  int Pulso;
+  int Temperatura;
+  int Hemoglobina;
+  int Hematocrito;
+  int Plaquetas;
   friend ostream &operator<<(ostream &os, Postulantes &p);
 
 
@@ -33,15 +41,25 @@ public:
   //destructores
   //~postulante();
   //metodos
-  string askname();
-  int askage();
-  string askgs();
-  char askrh();
-  char asksexo();
-  int askpeso();
-  string askcedula();
-  string askcorreo();
-  string asktelefono();
+  string ask_name();
+  int ask_age();
+  string ask_gs();
+  char ask_rh();
+  char ask_sexo();
+  string ask_cedula();
+  string ask_correo();
+  string ask_telefono();
+  string ask_direccion();
+  bool examenfisico();
+  int ask_peso();
+  int ask_tensionarterial_sistolica();
+  int ask_tensionarterial_diastolica();
+  int ask_pulso();
+  int ask_temperatura();
+  int ask_hemoglobina();
+  int ask_hematocrito();
+  int ask_recuentoplaquetas();
+
 };
 ostream & operator<<(ostream &os,Postulantes &p);
 #endif
