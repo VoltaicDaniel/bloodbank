@@ -216,11 +216,41 @@ tocrito>38){
    return vacunas;
  }
 
+ char Postulantes::ask_sentir(){
+   char sentir;
+   cout<<"Se siente bien hoy y goza de buena salud?, si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cin>> sentir;
+   while (sentir != 'F' && sentir != 'V' && sentir != 'v' && sentir != 'f'){
+     cout<< " La respuesta no es valida, porfavor ingresE (v) o (F):";
+     cin>> sentir;
+   }
+   return sentir;
+ }
+
+ char Postulantes::ask_edadpeso(){
+   char edadpeso='f';
+   if(Edad>=18 && Edad<=65){
+     cout<<"su edad es apta para donar"<<endl;
+     edadpeso='v';
+   }else{
+     cout<<"por su edad no es apto para donar"<<endl;
+   }
+   if(Peso>=50){
+     cout<<"su peso es apto para donar"<<endl;
+     edadpeso='v';
+   }else{
+     cout<<"su peso no es apto para donar"<<endl;
+   }
+   return edadpeso;
+ }
+
  bool condiciones_generales(){
    bool xx=false;
    Vacunas = ask_vacunas();
    Donacion = ask_donacion();
-   if(Donacion==true && (Vacunas=='f') && (Vacunas=='F')){
+   Sentir = ask_sentir();
+   Edadpeso= ask_edadpeso();
+   if(Donacion==true && (Vacunas=='f') && (Vacunas=='F')&& (Sentir=='v') && (Sentir=='V')&& (Edadpeso=='v') && (Edadpeso=='V')){
      xx=true;
    }
    return xx;
@@ -283,6 +313,7 @@ tocrito>38){
  }
 
  bool cuatrodias(){
+   cout<<"a continuacion responda estas preguntas solo tomando en cuenta las ultimas 72 horas: "<<endl;
    bool aa=false;
    Dientes = ask_dientes();
    Infecciones = ask_infecciones();
@@ -334,7 +365,28 @@ tocrito>38){
  }
 
  bool unyear(){
-
+   cout<<"A continuacion responda estas preguntas teniendo en cuenta solo sus ultimos 12 meses: "<<endl;
+   bool abc=false;
+   Endoscopias = ask_endoscopias();
+   Transfuciones = ask_transfuciones();
+   Tatuajes = ask_tatuajes();
+   Accidentes_salud = ask_accidentes_salud();
+   Conv_hepatitis = ask_conv_hepatitis();
+   Vacuna_antirrabica = ask_vacuna_antirrabica();
+   Trans_sexual = ask_trans_sexual();
+   Gay = ask_gay();
+   Mujeres_gay = ask_mujeres_gay();
+   Sexo_ocasional = ask_sexo_ocasional();
+   Sexo_adictos = ask_sexo_adictos();
+   Prostitucion = ask_prostitucion();
+   Sexo_prostitutes = ask_sexo_prostitutes();
+   Sexo_sidahepa = ask_sexo_sidahepa();
+   Sexo_transfuciones= ask_sexo_transfuciones();
+   Carcel = ask_carcel();
+   if((Endoscopias=='f') && (Endoscopias=='F') && (Transfuciones=='f') && (Transfuciones=='F') && (Tatuajes=='F') && (Tatuajes=='f')&& (Accidentes_salud=='F') && (Accidentes_salud=='f') && (Conv_hepatitis=='F') && (Conv_hepatitis=='f')&& (Vacuna_antirrabica=='F') && (Vacuna_antirrabica=='f') && (Trans_sexual=='F') && (Trans_sexual=='f')&& (Gay=='F') && (Gay=='f') && (Mujeres_gay=='F') && (Mujeres_gay=='f')&& (Sexo_ocasional=='F') && (Sexo_ocasional=='f') && (Sexo_adictos=='F') && (Sexo_adictos=='f')&& (Prostitucion=='F') && (Prostitucion=='f') && (Sexo_prostitutes=='F') && (Sexo_prostitutes=='f')&& (Sexo_sidahepa=='F') && (Sexo_sidahepa=='f')&& (Sexo_transfuciones=='F') && (Sexo_transfuciones=='f')&& (Carcel=='F') && (Carcel=='f')){
+     abc=true;
+   }
+   return abc;
  }
  char ask_endoscopias(){
    char endoscopias;
@@ -408,7 +460,7 @@ tocrito>38){
  }
  char ask_gay(){
    char gay;
-   cout<<"Si eres hombre, tienes relaciones sexuales frecuentes con hombres? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Si eres hombre, tienes relaciones sexuales frecuentes con otros hombres sin protección? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F), si es mujer ingrese (F):";
    cin>> trans_sexual;
    while (trans_sexual != 'F' && trans_sexual != 'V' && trans_sexual != 'v' && trans_sexual != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -416,14 +468,86 @@ tocrito>38){
    }
    return trans_sexual;
  }
- char ask_mujeres_gay();
- char ask_sexo_ocasional();
- char ask_sexo_adictos();
- char ask_prostitucion();
- char ask_sexo_prostitutes();
- char ask_sexo_sidahepa();
- char ask_sexo_transfuciones();
- char ask_carcel();
+ char ask_mujeres_gay(){
+   char mujeres_gay;
+   cout<<"Si eres mujer, has tenido relaciones con hombres incluidos en la pregunta anterior? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F), si es hombre ingrese (F):";
+   cin>> mujeres_gay;
+   while (mujeres_gay != 'F' && mujeres_gay != 'V' && mujeres_gay != 'v' && mujeres_gay != 'f'){
+     cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
+     cin>> mujeres_gay;
+   }
+   return mujeres_gay;
+ }
+ char ask_sexo_ocasional(){
+   char sexo_ocasional;
+   cout<<"Has mantenido relaciones sexuales ocasionales o tienes conocimiento de que su pareja las haya tenido,  aun con protección? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cin>> sexo_ocasional;
+   while (sexo_ocasional != 'F' && sexo_ocasional != 'V' && sexo_ocasional != 'v' && sexo_ocasional != 'f'){
+     cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
+     cin>> sexo_ocasional;
+   }
+   return sexo_ocasional;
+ }
+ char ask_sexo_adictos(){
+   char sexo_adictos;
+   cout<<"Has tenido relaciones sexuales con adictos o ex adictos a drogas? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cin>> sexo_adictos;
+   while (sexo_adictos != 'F' && sexo_adictos != 'V' && sexo_adictos != 'v' && sexo_adictos != 'f'){
+     cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
+     cin>> sexo_adictos;
+   }
+   return sexo_adictos;
+ }
+ char ask_prostitucion(){
+   char prostitucion;
+   cout<<"Has ejercido la prostitucion? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cin>> prostitucion;
+   while (prostitucion != 'F' && prostitucion != 'V' && prostitucion != 'v' && prostitucion != 'f'){
+     cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
+     cin>> prostitucion;
+   }
+   return prostitucion;
+ }
+ char ask_sexo_prostitutes(){
+   char sexo_prostitutes;
+   cout<<"Has tenido relaciones sexuales con personas que ejercen la prostitucion? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cin>> sexo_prostitutes;
+   while (sexo_prostitutes != 'F' && sexo_prostitutes != 'V' && sexo_prostitutes != 'v' && sexo_prostitutes != 'f'){
+     cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
+     cin>> sexo_prostitutes;
+   }
+   return sexo_prostitutes;
+ }
+ char ask_sexo_sidahepa(){
+   char sexo_sidahepa;
+   cout<<"Has tenido relaciones sexuales con personas con SIDA o con prueba positiva para SIDA o hepatitis? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cin>> sexo_sidahepa;
+   while (sexo_sidahepa != 'F' && sexo_sidahepa != 'V' && sexo_sidahepa != 'v' && sexo_sidahepa != 'f'){
+     cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
+     cin>> sexo_sidahepa;
+   }
+   return sexo_sidahepa;
+ }
+ char ask_sexo_transfuciones(){
+   char sexo_transfuciones;
+   cout<<"Has tenido relaciones sexuales con personas que reciban transfusiones, hemofílicos o en plan de diálisis? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cin>> sexo_transfuciones;
+   while (sexo_transfuciones != 'F' && sexo_transfuciones != 'V' && sexo_transfuciones != 'v' && sexo_transfuciones != 'f'){
+     cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
+     cin>> sexo_transfuciones;
+   }
+   return sexo_transfuciones;
+ }
+ char ask_carcel(){
+   char sexo_carcel;
+   cout<<"Has estado encarcelado o detenido? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cin>> sexo_carcel;
+   while (sexo_carcel != 'F' && sexo_carcel != 'V' && sexo_carcel != 'v' && sexo_carcel != 'f'){
+     cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
+     cin>> sexo_carcel;
+   }
+   return sexo_carcel;
+ }
 
  ostream & operator<<(ostream &os,Postulantes &p){
    return os<<"nombre: "<<p.Nombre<<'\n'<<"edad: "<<p.Edad<<'\n'<<"grupo S: "<<p.GrupoSanguineo<<'\n'<<"rh: "<<p.Rh<<'\n'<<"peso: "<<p.Peso<<'\n'<<"sexo: "<<p.Sexo<<endl;

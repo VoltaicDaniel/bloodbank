@@ -29,6 +29,8 @@ public:
   int Temperatura;
   int Hemoglobina;
   int Hematocrito;
+  char Sentir;;
+  char Edadpeso;
   int Plaquetas;
   bool Donacion;
   char Vacunas;
@@ -89,6 +91,8 @@ public:
   bool condiciones_generales();
   donacion ask_donacion();
   char ask_vacunas();
+  char ask_sentir();
+  char ask_edadpeso();
 
   bool impedimientos();
   char ask_enfermedades_cardiacas();
