@@ -89,7 +89,7 @@ public:
   int ask_recuentoplaquetas();
 
   bool condiciones_generales();
-  donacion ask_donacion();
+  bool ask_donacion();
   char ask_vacunas();
   char ask_sentir();
   char ask_edadpeso();
