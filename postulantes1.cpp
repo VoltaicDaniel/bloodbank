@@ -116,12 +116,7 @@ Postulantes:: Postulantes(){
    Hemoglobina = ask_hemoglobina();
    Hematocrito = ask_hematocrito();
    Plaquetas = ask_recuentoplaquetas();
-   if(Peso>50 && TensionArterialdias<100 && TensionArterialsis < 180 && Pulso > 50 && Pulso <100  && Hema
- char ask_accidentes_cerebro(){
-   char accidentes_cerebro;
-   cout<<"Ha padecido accidentes cerebrovasculares, epilepsia (convulsiones), lipotimias o desmayos? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
-   cin>> vacunas;
-tocrito>38){
+   if(Peso>50 && TensionArterialdias<100 && TensionArterialsis < 180 && Pulso > 50 && Pulso <100  && Hematocrito>38){
      if(Sexo=='f'){
        if(Hemoglobina>12.5){
          x=true;
@@ -134,11 +129,6 @@ tocrito>38){
    }else{ x= false; }
    return x;
  }
-
- char ask_accidentes_cerebro(){
-   char accidentes_cerebro;
-   cout<<"Ha padecido accidentes cerebrovasculares, epilepsia (convulsiones), lipotimias o desmayos? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
-   cin>> vacunas;
 
  int Postulantes::ask_tensionarterial_sistolica(){
    int tension;
@@ -156,21 +146,18 @@ tocrito>38){
 
  int Postulantes::ask_pulso(){
    int pulso;
- char ask_accidentes_cerebro(){
-   char accidentes_cerebro;
-   cout<<"Ha padecido accidentes cerebrovasculares, epilepsia (convulsiones), lipotimias o desmayos? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
-   cin>> vacunas;
-
    cout<<"Ingrese el pulso del postulante : ";
    cin >> pulso;
    return pulso;
  }
+ 
  int Postulantes::ask_temperatura(){
    int temperatura;
-   cout<<"Ingrese la temperatura del postulante(Â°C) : ";
+   cout<<"Ingrese la temperatura del postulante(°C) : ";
    cin >> temperatura;
    return temperatura;
  }
+ 
  int Postulantes::ask_hemoglobina(){
    int hemoglobina;
    cout<<"Ingrese la hemoglobina del postulante(gr/dl) : ";
@@ -244,7 +231,7 @@ tocrito>38){
    return edadpeso;
  }
 
- bool condiciones_generales(){
+ bool Postulantes::condiciones_generales(){
    bool xx=false;
    Vacunas = ask_vacunas();
    Donacion = ask_donacion();
@@ -256,7 +243,7 @@ tocrito>38){
    return xx;
  }
 
- bool impedimientos(){
+ bool Postulantes::impedimientos(){
    bool xy=false;
    Enfermedades_cardiacas = ask_enfermedades_cardiacas();
    Accidentes_cerebro = ask_accidentes_cerebro();
@@ -269,9 +256,9 @@ tocrito>38){
  }
 
 
- char ask_enfermedades_cardiacas(){
+ char Postulantes::ask_enfermedades_cardiacas(){
    char enfermedades_cardiacas;
-   cout<<"Usted posee enfermedades cardÃ­acas (dolor en el pecho, infarto, etc.), pulmonares, asma bronquial, tuberculosis activa, hipertensiÃ³n arterial no controlada? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Usted posee enfermedades cardíacas (dolor en el pecho, infarto, etc.), pulmonares, asma bronquial, tuberculosis activa, hipertensión arterial no controlada? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> enfermedades_cardiacas;
    while (enfermedades_cardiacas != 'F' && enfermedades_cardiacas != 'V' && enfermedades_cardiacas != 'v' && enfermedades_cardiacas != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -280,7 +267,7 @@ tocrito>38){
    return enfermedades_cardiacas;
  }
 
- char ask_accidentes_cerebro(){
+ char Postulantes::ask_accidentes_cerebro(){
    char accidentes_cerebro;
    cout<<"Ha padecido accidentes cerebrovasculares, epilepsia (convulsiones), lipotimias o desmayos? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> accidentes_cerebro;
@@ -290,9 +277,9 @@ tocrito>38){
    }
    return accidentes_cerebro;
  }
- char ask_anemia_3(){
+ char Postulantes::ask_anemia_3(){
    char anemia;
-   cout<<"Padece anemia, trastornos de la coagulaciÃ³n, cÃ¡ncer? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Padece anemia, trastornos de la coagulación, cáncer? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> anemia;
    while (anemia != 'F' && anemia != 'V' && anemia != 'v' && anemia != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -301,9 +288,9 @@ tocrito>38){
    return anemia;
  }
 
- char ask_renales(){
+ char Postulantes::ask_renales(){
    char renales;
-   cout<<"Padece enfermedades renales, diabetes en tratamiento con insulina, Ãºlcera gastroduodenal en actividad, colitis ulcerosa? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Padece enfermedades renales, diabetes en tratamiento con insulina, úlcera gastroduodenal en actividad, colitis ulcerosa? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> renales;
    while (renales != 'F' && renales != 'V' && renales != 'v' && renales != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -312,7 +299,7 @@ tocrito>38){
    return renales;
  }
 
- bool cuatrodias(){
+ bool Postulantes::cuatrodias(){
    cout<<"a continuacion responda estas preguntas solo tomando en cuenta las ultimas 72 horas: "<<endl;
    bool aa=false;
    Dientes = ask_dientes();
@@ -323,9 +310,9 @@ tocrito>38){
    return aa;
  }
 
- char ask_dientes(){
+ char Postulantes::ask_dientes(){
    char dientes;
-   cout<<"Ha tenido procedimientos odontolÃ³gicos (extracciÃ³n, tratamiento de conducto, limpieza dentaria, etc.).? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Ha tenido procedimientos odontológicos (extracción, tratamiento de conducto, limpieza dentaria, etc.).? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> dientes;
    while (dientes != 'F' && dientes != 'V' && dientes != 'v' && dientes != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -333,9 +320,9 @@ tocrito>38){
    }
    return dientes;
  }
- char ask_infecciones(){
+ char Postulantes::ask_infecciones(){
    char infecciones;
-   cout<<"Ha tenido infecciones, vÃ³mitos, diarrea y/o fiebre? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Ha tenido infecciones, vómitos, diarrea y/o fiebre? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> infecciones;
    while (infecciones != 'F' && infecciones != 'V' && infecciones != 'v' && infecciones != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -344,7 +331,7 @@ tocrito>38){
    return infecciones;
  }
 
- bool mujeres(){
+ bool Postulantes::mujeres(){
    bool ab=false;
    Embarazo = ask_embarazo();
    if((Embarazo=='f') && (Embarazo=='F')){
@@ -355,7 +342,7 @@ tocrito>38){
 
  char ask_embarazo(){
    char embarazo;
-   cout<<"esta usted durante el embarazo, lleva 8 semanas despuÃ©s de un parto o lleva 12 meses luego de su cesÃ¡rea o aborto? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"esta usted durante el embarazo, lleva 8 semanas después de un parto o lleva 12 meses luego de su cesárea o aborto? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> embarazo;
    while (embarazo != 'F' && embarazo != 'V' && embarazo != 'v' && embarazo != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -364,7 +351,7 @@ tocrito>38){
    return embarazo;
  }
 
- bool unyear(){
+ bool Postulantes::unyear(){
    cout<<"A continuacion responda estas preguntas teniendo en cuenta solo sus ultimos 12 meses: "<<endl;
    bool abc=false;
    Endoscopias = ask_endoscopias();
@@ -388,9 +375,9 @@ tocrito>38){
    }
    return abc;
  }
- char ask_endoscopias(){
+ char Postulantes::ask_endoscopias(){
    char endoscopias;
-   cout<<"Ha tenido endoscopÃ­as, laparoscopÃ­as, cateterismos o tratamiento quirÃºrgico? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Ha tenido endoscopías, laparoscopías, cateterismos o tratamiento quirúrgico? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> endoscopias;
    while (endoscopias != 'F' && endoscopias != 'V' && endoscopias != 'v' && endoscopias != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -398,7 +385,7 @@ tocrito>38){
    }
    return endoscopias;
  }
- char ask_transfuciones(){
+ char Postulantes::ask_transfuciones(){
    char transfuciones;
    cout<<"Ha recibido transfusiones? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> transfuciones;
@@ -408,7 +395,7 @@ tocrito>38){
    }
    return transfuciones;
  }
- char ask_tatuajes(){
+ char Postulantes::ask_tatuajes(){
    char tatuajes;
    cout<<"Tiene tatuajes, perforaciones de la piel en alguna parte del cuerpo o acupuntura? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> tatuajes;
@@ -418,7 +405,7 @@ tocrito>38){
    }
    return tatuajes;
  }
- char ask_accidentes_salud(){
+ char Postulantes::ask_accidentes_salud(){
    char accidentes_salud;
    cout<<"Como trabajador de salud,ha sufrido accidentes laborales (punciones, salpicaduras, etc.)? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> accidentes_salud;
@@ -428,7 +415,7 @@ tocrito>38){
    }
    return accidentes_salud;
  }
- char ask_conv_hepatitis(){
+ char Postulantes::ask_conv_hepatitis(){
    char conv_hepatitis;
    cout<<"Has convivido con personas con hepatitis? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> conv_hepatitis;
@@ -438,9 +425,9 @@ tocrito>38){
    }
    return conv_hepatitis;
  }
- char ask_vacuna_antirrabica(){
+ char Postulantes::ask_vacuna_antirrabica(){
    char vacuna_antirrabica;
-   cout<<"Tienes la vacuna antirrÃ¡bica? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Tienes la vacuna antirrábica? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> vacuna_antirrabica;
    while (vacuna_antirrabica != 'F' && vacuna_antirrabica != 'V' && vacuna_antirrabica != 'v' && vacuna_antirrabica != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -448,9 +435,9 @@ tocrito>38){
    }
    return vacuna_antirrabica;
  }
- char ask_trans_sexual(){
+ char Postulantes::ask_trans_sexual(){
    char trans_sexual;
-   cout<<"Tienes enfermedades de transmisiÃ³n sexual: sÃ­filis o gonorrea? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Tienes enfermedades de transmisión sexual: sífilis o gonorrea? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> trans_sexual;
    while (trans_sexual != 'F' && trans_sexual != 'V' && trans_sexual != 'v' && trans_sexual != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -458,17 +445,17 @@ tocrito>38){
    }
    return trans_sexual;
  }
- char ask_gay(){
+ char Postulantes::ask_gay(){
    char gay;
-   cout<<"Si eres hombre, tienes relaciones sexuales frecuentes con otros hombres sin protecciÃ³n? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F), si es mujer ingrese (F):";
-   cin>> trans_sexual;
-   while (trans_sexual != 'F' && trans_sexual != 'V' && trans_sexual != 'v' && trans_sexual != 'f'){
+   cout<<"Si eres hombre, tienes relaciones sexuales frecuentes con otros hombres sin protección? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F), si es mujer ingrese (F):";
+   cin>> gay;
+   while (gay != 'F' && gay != 'V' && gay != 'v' && gay != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
-     cin>> trans_sexual;
+     cin>> gay;
    }
-   return trans_sexual;
+   return gay;
  }
- char ask_mujeres_gay(){
+ char Postulantes::ask_mujeres_gay(){
    char mujeres_gay;
    cout<<"Si eres mujer, has tenido relaciones con hombres incluidos en la pregunta anterior? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F), si es hombre ingrese (F):";
    cin>> mujeres_gay;
@@ -478,9 +465,9 @@ tocrito>38){
    }
    return mujeres_gay;
  }
- char ask_sexo_ocasional(){
+ char Postulantes::ask_sexo_ocasional(){
    char sexo_ocasional;
-   cout<<"Has mantenido relaciones sexuales ocasionales o tienes conocimiento de que su pareja las haya tenido,  aun con protecciÃ³n? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Has mantenido relaciones sexuales ocasionales o tienes conocimiento de que su pareja las haya tenido,  aun con protección? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> sexo_ocasional;
    while (sexo_ocasional != 'F' && sexo_ocasional != 'V' && sexo_ocasional != 'v' && sexo_ocasional != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -488,7 +475,7 @@ tocrito>38){
    }
    return sexo_ocasional;
  }
- char ask_sexo_adictos(){
+ char Postulantes::ask_sexo_adictos(){
    char sexo_adictos;
    cout<<"Has tenido relaciones sexuales con adictos o ex adictos a drogas? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> sexo_adictos;
@@ -498,7 +485,7 @@ tocrito>38){
    }
    return sexo_adictos;
  }
- char ask_prostitucion(){
+ char Postulantes::ask_prostitucion(){
    char prostitucion;
    cout<<"Has ejercido la prostitucion? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> prostitucion;
@@ -508,7 +495,7 @@ tocrito>38){
    }
    return prostitucion;
  }
- char ask_sexo_prostitutes(){
+ char Postulantes::ask_sexo_prostitutes(){
    char sexo_prostitutes;
    cout<<"Has tenido relaciones sexuales con personas que ejercen la prostitucion? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> sexo_prostitutes;
@@ -518,7 +505,7 @@ tocrito>38){
    }
    return sexo_prostitutes;
  }
- char ask_sexo_sidahepa(){
+ char Postulantes::ask_sexo_sidahepa(){
    char sexo_sidahepa;
    cout<<"Has tenido relaciones sexuales con personas con SIDA o con prueba positiva para SIDA o hepatitis? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> sexo_sidahepa;
@@ -528,9 +515,9 @@ tocrito>38){
    }
    return sexo_sidahepa;
  }
- char ask_sexo_transfuciones(){
+ char Postulantes::ask_sexo_transfuciones(){
    char sexo_transfuciones;
-   cout<<"Has tenido relaciones sexuales con personas que reciban transfusiones, hemofÃ­licos o en plan de diÃ¡lisis? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Has tenido relaciones sexuales con personas que reciban transfusiones, hemofílicos o en plan de diálisis? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> sexo_transfuciones;
    while (sexo_transfuciones != 'F' && sexo_transfuciones != 'V' && sexo_transfuciones != 'v' && sexo_transfuciones != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -538,7 +525,7 @@ tocrito>38){
    }
    return sexo_transfuciones;
  }
- char ask_carcel(){
+ char Postulantes::ask_carcel(){
    char sexo_carcel;
    cout<<"Has estado encarcelado o detenido? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> sexo_carcel;
