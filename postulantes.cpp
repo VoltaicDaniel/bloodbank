@@ -127,6 +127,13 @@ Postulantes:: Postulantes(){
        }
      }
    }else{ x= false; }
+   cout<<endl;
+   if(x==true){
+     cout<<"el examen fisico salio bien, continuemos"<<endl;
+   }else{
+     cout<<"ha fallado el examen fisico, no puede donar"<<endl;
+   }
+   cout<<endl;
    return x;
  }
 
@@ -150,16 +157,16 @@ Postulantes:: Postulantes(){
    cin >> pulso;
    return pulso;
  }
- 
+
  int Postulantes::ask_temperatura(){
    int temperatura;
-   cout<<"Ingrese la temperatura del postulante(°C) : ";
+   cout<<"Ingrese la temperatura del postulante(Â°C) : ";
    cin >> temperatura;
    return temperatura;
  }
- 
- int Postulantes::ask_hemoglobina(){
-   int hemoglobina;
+
+ double Postulantes::ask_hemoglobina(){
+   double hemoglobina;
    cout<<"Ingrese la hemoglobina del postulante(gr/dl) : ";
    cin >> hemoglobina;
    return hemoglobina;
@@ -181,7 +188,7 @@ Postulantes:: Postulantes(){
    bool x=false;
    cout<<"Indique hace cuantos meses no dona sangre, y si su respuesta es que nunca ha donado inserte el numero (-1):";
    cin>> donacion;
-   if(Sexo=='f'){
+   if(Sexo=='f'|| Sexo=='F'){
      if(donacion>=4 || donacion==-1){
        x=true;
      }
@@ -190,7 +197,7 @@ Postulantes:: Postulantes(){
        x=true;
      }
    }
-   return donacion;
+   return x;
  }
  char Postulantes::ask_vacunas(){
    char vacunas;
@@ -216,17 +223,12 @@ Postulantes:: Postulantes(){
 
  char Postulantes::ask_edadpeso(){
    char edadpeso='f';
-   if(Edad>=18 && Edad<=65){
-     cout<<"su edad es apta para donar"<<endl;
+
+   if(Edad>=18 && Edad<=65 && Peso >= 50){
+     cout<<"su edad y su peso son aptos para donar"<<endl;
      edadpeso='v';
    }else{
-     cout<<"por su edad no es apto para donar"<<endl;
-   }
-   if(Peso>=50){
-     cout<<"su peso es apto para donar"<<endl;
-     edadpeso='v';
-   }else{
-     cout<<"su peso no es apto para donar"<<endl;
+     cout<<"por su edad y su peso no son aptos para donar "<<endl;
    }
    return edadpeso;
  }
@@ -237,9 +239,16 @@ Postulantes:: Postulantes(){
    Donacion = ask_donacion();
    Sentir = ask_sentir();
    Edadpeso= ask_edadpeso();
-   if(Donacion==true && (Vacunas=='f') && (Vacunas=='F')&& (Sentir=='v') && (Sentir=='V')&& (Edadpeso=='v') && (Edadpeso=='V')){
+   if((Donacion==true) && (Vacunas=='f' || Vacunas=='F')&& (Sentir=='v' || Sentir=='V') && (Edadpeso=='v' || Edadpeso=='V')){
      xx=true;
    }
+   cout<<'\n';
+   if(xx==true){
+     cout<<"las condiciones generales son buenas, continuemos"<<endl;
+   }else{
+     cout<<"no tiene las condiciones generales, no puede donar"<<endl;
+   }
+   cout<<endl;
    return xx;
  }
 
@@ -249,16 +258,23 @@ Postulantes:: Postulantes(){
    Accidentes_cerebro = ask_accidentes_cerebro();
    Anemia_3 = ask_anemia_3();
    Renales = ask_renales();
-   if((Enfermedades_cardiacas=='f') && (Enfermedades_cardiacas=='F') && (Accidentes_cerebro=='f') && (Accidentes_cerebro=='F') && (Anemia_3=='f') && (Anemia_3=='F') && (Renales=='f') && (Renales=='F')){
+   if((Enfermedades_cardiacas=='f' || Enfermedades_cardiacas=='F') && (Accidentes_cerebro=='f'|| Accidentes_cerebro=='F') && (Anemia_3=='f' || Anemia_3=='F') && (Renales=='f'||Renales=='F')){
      xy=true;
    }
+   cout<<'\n';
+   if(xy==true){
+     cout<<"Estos aspectos son correctos, continuemos"<<endl;
+   }else{
+     cout<<"No tiene los aspectos necesarios, no puede donar"<<endl;
+   }
+   cout<<endl;
    return xy;
  }
 
 
  char Postulantes::ask_enfermedades_cardiacas(){
    char enfermedades_cardiacas;
-   cout<<"Usted posee enfermedades cardíacas (dolor en el pecho, infarto, etc.), pulmonares, asma bronquial, tuberculosis activa, hipertensión arterial no controlada? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Usted posee enfermedades cardÃ­acas (dolor en el pecho, infarto, etc.), pulmonares, asma bronquial, tuberculosis activa, hipertensiÃ³n arterial no controlada? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> enfermedades_cardiacas;
    while (enfermedades_cardiacas != 'F' && enfermedades_cardiacas != 'V' && enfermedades_cardiacas != 'v' && enfermedades_cardiacas != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -279,7 +295,7 @@ Postulantes:: Postulantes(){
  }
  char Postulantes::ask_anemia_3(){
    char anemia;
-   cout<<"Padece anemia, trastornos de la coagulación, cáncer? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Padece anemia, trastornos de la coagulaciÃ³n, cÃ¡ncer? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> anemia;
    while (anemia != 'F' && anemia != 'V' && anemia != 'v' && anemia != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -290,7 +306,7 @@ Postulantes:: Postulantes(){
 
  char Postulantes::ask_renales(){
    char renales;
-   cout<<"Padece enfermedades renales, diabetes en tratamiento con insulina, úlcera gastroduodenal en actividad, colitis ulcerosa? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Padece enfermedades renales, diabetes en tratamiento con insulina, Ãºlcera gastroduodenal en actividad, colitis ulcerosa? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> renales;
    while (renales != 'F' && renales != 'V' && renales != 'v' && renales != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -304,15 +320,22 @@ Postulantes:: Postulantes(){
    bool aa=false;
    Dientes = ask_dientes();
    Infecciones = ask_infecciones();
-   if((Dientes=='f') && (Dientes=='F') && (Infecciones=='f') && (Infecciones=='F')){
+   if((Dientes=='f' || Dientes=='F') && (Infecciones=='f'|| Infecciones=='F')){
      aa=true;
    }
+   cout<<'\n';
+   if(aa==true){
+     cout<<"Tiene los aspectos adecuados, continuemos"<<endl;
+   }else{
+     cout<<"Los aspectos no son adecuados, no puede donar"<<endl;
+   }
+   cout<<endl;
    return aa;
  }
 
  char Postulantes::ask_dientes(){
    char dientes;
-   cout<<"Ha tenido procedimientos odontológicos (extracción, tratamiento de conducto, limpieza dentaria, etc.).? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Ha tenido procedimientos odontolÃ³gicos (extracciÃ³n, tratamiento de conducto, limpieza dentaria, etc.).? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> dientes;
    while (dientes != 'F' && dientes != 'V' && dientes != 'v' && dientes != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -322,7 +345,7 @@ Postulantes:: Postulantes(){
  }
  char Postulantes::ask_infecciones(){
    char infecciones;
-   cout<<"Ha tenido infecciones, vómitos, diarrea y/o fiebre? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Ha tenido infecciones, vÃ³mitos, diarrea y/o fiebre? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> infecciones;
    while (infecciones != 'F' && infecciones != 'V' && infecciones != 'v' && infecciones != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -331,18 +354,9 @@ Postulantes:: Postulantes(){
    return infecciones;
  }
 
- bool Postulantes::mujeres(){
-   bool ab=false;
-   Embarazo = ask_embarazo();
-   if((Embarazo=='f') && (Embarazo=='F')){
-     ab=true;
-   }
-   return ab;
- }
-
- char ask_embarazo(){
+ char Postulantes::ask_embarazo(){
    char embarazo;
-   cout<<"esta usted durante el embarazo, lleva 8 semanas después de un parto o lleva 12 meses luego de su cesárea o aborto? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"esta usted durante el embarazo, lleva 8 semanas despuÃ©s de un parto o lleva 12 meses luego de su cesÃ¡rea o aborto? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> embarazo;
    while (embarazo != 'F' && embarazo != 'V' && embarazo != 'v' && embarazo != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -350,6 +364,25 @@ Postulantes:: Postulantes(){
    }
    return embarazo;
  }
+
+ bool Postulantes::mujeres(){
+   bool ab=false;
+
+   Embarazo = ask_embarazo();
+   if((Embarazo=='f') || (Embarazo=='F')){
+     ab=true;
+   }
+   cout<<'\n';
+   if(ab==true){
+     cout<<"Tiene los aspectos adecuados, continuemos"<<endl;
+   }else{
+     cout<<"Los aspectos no son adecuados, no puede donar"<<endl;
+   }
+   cout<<endl;
+   return ab;
+ }
+
+
 
  bool Postulantes::unyear(){
    cout<<"A continuacion responda estas preguntas teniendo en cuenta solo sus ultimos 12 meses: "<<endl;
@@ -370,14 +403,21 @@ Postulantes:: Postulantes(){
    Sexo_sidahepa = ask_sexo_sidahepa();
    Sexo_transfuciones= ask_sexo_transfuciones();
    Carcel = ask_carcel();
-   if((Endoscopias=='f') && (Endoscopias=='F') && (Transfuciones=='f') && (Transfuciones=='F') && (Tatuajes=='F') && (Tatuajes=='f')&& (Accidentes_salud=='F') && (Accidentes_salud=='f') && (Conv_hepatitis=='F') && (Conv_hepatitis=='f')&& (Vacuna_antirrabica=='F') && (Vacuna_antirrabica=='f') && (Trans_sexual=='F') && (Trans_sexual=='f')&& (Gay=='F') && (Gay=='f') && (Mujeres_gay=='F') && (Mujeres_gay=='f')&& (Sexo_ocasional=='F') && (Sexo_ocasional=='f') && (Sexo_adictos=='F') && (Sexo_adictos=='f')&& (Prostitucion=='F') && (Prostitucion=='f') && (Sexo_prostitutes=='F') && (Sexo_prostitutes=='f')&& (Sexo_sidahepa=='F') && (Sexo_sidahepa=='f')&& (Sexo_transfuciones=='F') && (Sexo_transfuciones=='f')&& (Carcel=='F') && (Carcel=='f')){
+   if((Endoscopias=='f' || Endoscopias=='F') && (Transfuciones=='f' || Transfuciones=='F') && (Tatuajes=='F' || Tatuajes=='f')&& (Accidentes_salud=='F' || Accidentes_salud=='f') && (Conv_hepatitis=='F' || Conv_hepatitis=='f')&& (Vacuna_antirrabica=='F' || Vacuna_antirrabica=='f') && (Trans_sexual=='F' || Trans_sexual=='f')&& (Gay=='F' || Gay=='f') && (Mujeres_gay=='F' || Mujeres_gay=='f')&& (Sexo_ocasional=='F' || Sexo_ocasional=='f') && (Sexo_adictos=='F' || Sexo_adictos=='f')&& (Prostitucion=='F' || Prostitucion=='f') && (Sexo_prostitutes=='F' || Sexo_prostitutes=='f')&& (Sexo_sidahepa=='F' || Sexo_sidahepa=='f')&& (Sexo_transfuciones=='F' || Sexo_transfuciones=='f')&& (Carcel=='F' || Carcel=='f')){
      abc=true;
    }
+   cout<<'\n';
+   if(abc==true){
+     cout<<"Tiene los aspectos adecuados, continuemos"<<endl;
+   }else{
+     cout<<"Los aspectos no son adecuados, no puede donar"<<endl;
+   }
+   cout<<endl;
    return abc;
  }
  char Postulantes::ask_endoscopias(){
    char endoscopias;
-   cout<<"Ha tenido endoscopías, laparoscopías, cateterismos o tratamiento quirúrgico? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Ha tenido endoscopÃ­as, laparoscopÃ­as, cateterismos o tratamiento quirÃºrgico? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> endoscopias;
    while (endoscopias != 'F' && endoscopias != 'V' && endoscopias != 'v' && endoscopias != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -427,7 +467,7 @@ Postulantes:: Postulantes(){
  }
  char Postulantes::ask_vacuna_antirrabica(){
    char vacuna_antirrabica;
-   cout<<"Tienes la vacuna antirrábica? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Tienes la vacuna antirrÃ¡bica? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> vacuna_antirrabica;
    while (vacuna_antirrabica != 'F' && vacuna_antirrabica != 'V' && vacuna_antirrabica != 'v' && vacuna_antirrabica != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -437,7 +477,7 @@ Postulantes:: Postulantes(){
  }
  char Postulantes::ask_trans_sexual(){
    char trans_sexual;
-   cout<<"Tienes enfermedades de transmisión sexual: sífilis o gonorrea? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Tienes enfermedades de transmisiÃ³n sexual: sÃ­filis o gonorrea? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> trans_sexual;
    while (trans_sexual != 'F' && trans_sexual != 'V' && trans_sexual != 'v' && trans_sexual != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -447,7 +487,7 @@ Postulantes:: Postulantes(){
  }
  char Postulantes::ask_gay(){
    char gay;
-   cout<<"Si eres hombre, tienes relaciones sexuales frecuentes con otros hombres sin protección? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F), si es mujer ingrese (F):";
+   cout<<"Si eres hombre, tienes relaciones sexuales frecuentes con otros hombres sin protecciÃ³n? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F), si es mujer ingrese (F):";
    cin>> gay;
    while (gay != 'F' && gay != 'V' && gay != 'v' && gay != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -467,7 +507,7 @@ Postulantes:: Postulantes(){
  }
  char Postulantes::ask_sexo_ocasional(){
    char sexo_ocasional;
-   cout<<"Has mantenido relaciones sexuales ocasionales o tienes conocimiento de que su pareja las haya tenido,  aun con protección? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Has mantenido relaciones sexuales ocasionales o tienes conocimiento de que su pareja las haya tenido,  aun con protecciÃ³n? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> sexo_ocasional;
    while (sexo_ocasional != 'F' && sexo_ocasional != 'V' && sexo_ocasional != 'v' && sexo_ocasional != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -517,7 +557,7 @@ Postulantes:: Postulantes(){
  }
  char Postulantes::ask_sexo_transfuciones(){
    char sexo_transfuciones;
-   cout<<"Has tenido relaciones sexuales con personas que reciban transfusiones, hemofílicos o en plan de diálisis? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cout<<"Has tenido relaciones sexuales con personas que reciban transfusiones, hemofÃ­licos o en plan de diÃ¡lisis? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
    cin>> sexo_transfuciones;
    while (sexo_transfuciones != 'F' && sexo_transfuciones != 'V' && sexo_transfuciones != 'v' && sexo_transfuciones != 'f'){
      cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
@@ -535,6 +575,150 @@ Postulantes:: Postulantes(){
    }
    return sexo_carcel;
  }
+
+ char Postulantes::ask_hepatitis_diez(){
+   char hepatitis_diez;
+   cout<<"Â¿ Has tenido hepatitis despues de los 10 aÃ±os ? , si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cin>> hepatitis_diez;
+   while (hepatitis_diez != 'F' && hepatitis_diez!= 'V' && hepatitis_diez!= 'v' && hepatitis_diez != 'f'){
+     cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
+     cin>> hepatitis_diez;
+   }
+   return hepatitis_diez;
+ }
+ char Postulantes::ask_chagas(){
+   char chagas;
+   cout<<"Â¿ Has tenido la enfermedad de chagas o brucelocis o prueba postiva para alguna de ellas? , si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cin>> chagas;
+   while (chagas != 'F' && chagas!= 'V' && chagas!= 'v' && chagas != 'f'){
+     cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
+     cin>> chagas;
+   }
+   return chagas;
+ }
+
+ char Postulantes::ask_hormona_cre(){
+   char hormona_cre;
+   cout<<"Â¿ has recibido la hormoa de crecimiento antes de 1986 ? , si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cin>> hormona_cre;
+   while (hormona_cre != 'F' && hormona_cre!= 'V' && hormona_cre!= 'v' && hormona_cre != 'f'){
+     cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
+     cin>> hormona_cre;
+   }
+   return hormona_cre;
+ }
+
+ char Postulantes::ask_hemofilico(){
+   char hemofilico;
+   cout<<"Â¿ Eres hemofilico, hemodializado o has recibido injertos de meninges o cornea ? , si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cin>> hemofilico;
+   while (hemofilico != 'F' && hemofilico!= 'V' && hemofilico!= 'v' && hemofilico != 'f'){
+     cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
+     cin>> hemofilico;
+   }
+   return hemofilico;
+ }
+
+ char Postulantes::ask_drogas_inyectable(){
+   char drogas_inyectable;
+   cout<<"Â¿ Has tenido  adiccion a drogas inyectables en algun momento de tu vida ? , si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cin>> drogas_inyectable;
+   while (drogas_inyectable != 'F' && drogas_inyectable!= 'V' && drogas_inyectable!= 'v' && drogas_inyectable != 'f'){
+     cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
+     cin>> drogas_inyectable;
+   }
+   return drogas_inyectable;
+ }
+
+ char Postulantes::ask_sida_posi(){
+   char sida_posi;
+   cout<<"Â¿ Tienes sida o alguna vez has tenido algun resultado positivo para sida? , si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cin>> sida_posi;
+   while (sida_posi != 'F' && sida_posi!= 'V' && sida_posi!= 'v' && sida_posi != 'f'){
+     cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
+     cin>> sida_posi;
+   }
+   return sida_posi;
+ }
+
+ char Postulantes::ask_paludismo(){
+   char paludismo;
+   cout<<"Â¿ Has tenido paludismo o recibido medicamentos antipaludicos en forma preventiva en los ultimos tres aÃ±os o ha estado en el ultimo aÃ±o en paises donde existe esta enfermadad ? , si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cin>> paludismo;
+   while (paludismo != 'F' && paludismo!= 'V' && paludismo!= 'v' && paludismo != 'f'){
+     cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
+     cin>> paludismo;
+   }
+   return paludismo;
+ }
+
+ char Postulantes::ask_manifesta_sida(){
+   char manifesta_sida;
+   cout<<"Â¿ Presenta manifestaciones clinicas que pueden estar asociadas con sida, como perdida de peso inexplicable, fiebre de mas de diez dias de evolucion o agrandamiento ganglionar ? , si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cin>> manifesta_sida;
+   while (manifesta_sida != 'F' && manifesta_sida!= 'V' && manifesta_sida!= 'v' && manifesta_sida != 'f'){
+     cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
+     cin>> manifesta_sida;
+   }
+   return manifesta_sida;
+ }
+
+ char Postulantes::ask_dengue(){
+   char dengue;
+   cout<<"Â¿ Has estado en los ultimos 30 dias por zonas afectadas por dengue ? , si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
+   cin>> dengue;
+   while (dengue != 'F' && dengue!= 'V' && dengue!= 'v' && dengue != 'f'){
+     cout<< " La respuesta no es valida, porfavor ingrese (v) o (F):";
+     cin>>dengue;
+   }
+   return dengue;
+ }
+
+ bool Postulantes::impedimientos_definitivos(){
+   cout<<"A continuacion responda estas preguntas sobre impedimientos impedimientos_definitivos: "<<endl;
+   bool abcTodos=false;
+   Hepatitis_diez = ask_hepatitis_diez();
+   Chagas = ask_chagas();
+   Hormona_cre = ask_hormona_cre();
+   Hemofilico = ask_hemofilico();
+   Drogas_inyectable = ask_drogas_inyectable();
+   Sida_posi = ask_sida_posi();
+   Manifesta_sida = ask_manifesta_sida();
+   Paludismo = ask_paludismo();
+   Dengue = ask_dengue();
+   if((Hepatitis_diez=='f' || Hepatitis_diez=='F') && (Chagas=='f' || Chagas=='F') && (Hormona_cre=='F' || Hormona_cre=='f')&& (Hemofilico=='F' || Hemofilico=='f') && (Drogas_inyectable=='F' || Drogas_inyectable=='f')&& (Sida_posi=='F' || Sida_posi=='f') && (Manifesta_sida=='F' || Manifesta_sida=='f')&& (Paludismo=='F' || Paludismo=='f') && (Dengue=='F' || Dengue=='f')){
+     abcTodos=true;
+   }
+   cout<<'\n';
+   if(abcTodos==true){
+     cout<<"Tiene los aspectos adecuados, continuemos"<<endl;
+   }else{
+     cout<<"Los aspectos no son adecuados, no puede donar"<<endl;
+   }
+   cout<<endl;
+   return abcTodos;
+ }
+
+ bool Postulantes::aceptado(){
+   bool resultado=false;
+   Examenfisico = examenfisico();
+   Condiciones_generales = condiciones_generales();
+   Impedimientos = impedimientos();
+   Cuatrodias = cuatrodias();
+   Mujeres = mujeres();
+   Unyear = unyear();
+   Impedimientos_definitivos = impedimientos_definitivos();
+   if((Examenfisico==true)&&(Condiciones_generales==true)&&(Impedimientos==true)&&(Cuatrodias==true)&&(Mujeres==true)&&(Unyear==true)&&(Impedimientos_definitivos==true)){
+     resultado=true;
+   }
+   if(resultado==true){
+      cout<<"!FELICIDADESÂ¡ la persona puede donar, continue"<<endl;
+   }else{
+      cout<<"Lastimosamente no puede donar. cuidese"<<endl;
+   }
+   return resultado;
+ }
+
 
  ostream & operator<<(ostream &os,Postulantes &p){
    return os<<"nombre: "<<p.Nombre<<'\n'<<"edad: "<<p.Edad<<'\n'<<"grupo S: "<<p.GrupoSanguineo<<'\n'<<"rh: "<<p.Rh<<'\n'<<"peso: "<<p.Peso<<'\n'<<"sexo: "<<p.Sexo<<endl;

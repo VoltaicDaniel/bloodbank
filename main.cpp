@@ -3,7 +3,7 @@
 int main() {
 
   Postulantes Postulante1;
-  Postulante1.examenfisico();
-  cout<<Postulante1;
+  bool aceptado=Postulante1.aceptado();
+  cout<<aceptado;
   return 0;
 }

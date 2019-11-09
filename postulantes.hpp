@@ -12,6 +12,7 @@ using namespace std;
 
 class Postulantes {
 private:
+  //bool Aceptado = aceptado();
 public:
   string Nombre;
   int  Edad;
@@ -27,7 +28,7 @@ public:
   int TensionArterialdias;
   int Pulso;
   int Temperatura;
-  int Hemoglobina;
+  double Hemoglobina;
   int Hematocrito;
   char Sentir;;
   char Edadpeso;
@@ -57,6 +58,23 @@ public:
   char Sexo_sidahepa;
   char Sexo_transfuciones;
   char Carcel;
+  char Hepatitis_diez;
+  char Chagas;
+  char Hormona_cre;
+  char Hemofilico;
+  char Drogas_inyectable;
+  char Sida_posi;
+  char Manifesta_sida;
+  char Paludismo;
+  char Dengue;
+  bool Examenfisico;
+  bool Condiciones_generales;
+  bool Impedimientos;
+  bool Cuatrodias;
+  bool Mujeres;
+  bool Unyear;
+  bool Impedimientos_definitivos;
+  bool Aceptado;
   friend ostream &operator<<(ostream &os, Postulantes &p);
 
 
@@ -84,7 +102,7 @@ public:
   int ask_tensionarterial_diastolica();
   int ask_pulso();
   int ask_temperatura();
-  int ask_hemoglobina();
+  double ask_hemoglobina();
   int ask_hematocrito();
   int ask_recuentoplaquetas();
 
@@ -136,6 +154,7 @@ public:
   char ask_paludismo();
   char ask_dengue();
 
+  bool aceptado();
 
 };
 ostream & operator<<(ostream &os,Postulantes &p);
