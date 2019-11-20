@@ -12,7 +12,6 @@ using namespace std;
 
 class Postulantes {
 private:
-  //bool Aceptado = aceptado();
 public:
   string Nombre;
   int  Edad;
@@ -23,7 +22,6 @@ public:
   string Cedula;
   string Correo;
   string Telefono;
-  string Direccion;
   int TensionArterialsis;
   int TensionArterialdias;
   int Pulso;
@@ -80,7 +78,7 @@ public:
 
 
   //constructores
-  Postulantes(string name,int edad,char ola,char a,char b,string c,string d,string e,bool f);
+  Postulantes(string name,int edad,char ola,char a,char b,string c,string d,string e,bool f,vector<Postulantes> &vecc);
   Postulantes();
 
   //destructores
@@ -155,8 +153,20 @@ public:
   char ask_dengue();
 
   bool aceptado();
-
+  vector<Postulantes> anade(Postulantes x, vector<Postulantes> &b);
 };
 ostream & operator<<(ostream &os,Postulantes &p);
+class Receptores{
+private:
+public:
+  string GrupoSanguineo;
+  char Rh;
+  string Cedula;
+  friend ostream &operator<<(ostream &os, Receptores &p);
+  Receptores(string gs, char rh, string cedula,List<Postulantes> listt);
+  Postulantes Search(Receptores mio, vector<Postulantes> base);
+}
+
+ostream & operator<<(ostream &os,Receptores &p);
 
 #endif

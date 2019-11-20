@@ -11,7 +11,7 @@ Postulantes:: Postulantes(){
   Telefono = ask_telefono();
   Aceptado = aceptado();
 }
-Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,string d,string e,bool f){
+Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,string d,string e,bool f,vector<Postulantes> &vecc){
   Nombre = name;
   Edad = edad;
   GrupoSanguineo = ola;
@@ -21,6 +21,8 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
   Correo = d;
   Telefono = e;
   Aceptado = f;
+  anade(*this,vecc);
+
 }
  string Postulantes::ask_name(){
    string nombre;
@@ -220,7 +222,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    }
    return vacunas;
  }
-
  char Postulantes::ask_sentir(){
    char sentir;
    cout<<"Se siente bien hoy y goza de buena salud?, si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
@@ -281,8 +282,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    cout<<endl;
    return xy;
  }
-
-
  char Postulantes::ask_enfermedades_cardiacas(){
    char enfermedades_cardiacas;
    cout<<"Usted posee enfermedades cardíacas (dolor en el pecho, infarto, etc.), pulmonares, asma bronquial, tuberculosis activa, hipertensión arterial no controlada? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
@@ -293,7 +292,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    }
    return enfermedades_cardiacas;
  }
-
  char Postulantes::ask_accidentes_cerebro(){
    char accidentes_cerebro;
    cout<<"Ha padecido accidentes cerebrovasculares, epilepsia (convulsiones), lipotimias o desmayos? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
@@ -314,7 +312,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    }
    return anemia;
  }
-
  char Postulantes::ask_renales(){
    char renales;
    cout<<"Padece enfermedades renales, diabetes en tratamiento con insulina, úlcera gastroduodenal en actividad, colitis ulcerosa? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
@@ -325,7 +322,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    }
    return renales;
  }
-
  bool Postulantes::cuatrodias(){
    cout<<"a continuacion responda estas preguntas solo tomando en cuenta las ultimas 72 horas: "<<endl;
    bool aa=false;
@@ -343,7 +339,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    cout<<endl;
    return aa;
  }
-
  char Postulantes::ask_dientes(){
    char dientes;
    cout<<"Ha tenido procedimientos odontológicos (extracción, tratamiento de conducto, limpieza dentaria, etc.).? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
@@ -364,7 +359,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    }
    return infecciones;
  }
-
  char Postulantes::ask_embarazo(){
    char embarazo;
    cout<<"esta usted durante el embarazo, lleva 8 semanas después de un parto o lleva 12 meses luego de su cesárea o aborto? si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
@@ -375,7 +369,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    }
    return embarazo;
  }
-
  bool Postulantes::mujeres(){
    bool ab=false;
 
@@ -392,9 +385,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    cout<<endl;
    return ab;
  }
-
-
-
  bool Postulantes::unyear(){
    cout<<"A continuacion responda estas preguntas teniendo en cuenta solo sus ultimos 12 meses: "<<endl;
    bool abc=false;
@@ -586,7 +576,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    }
    return sexo_carcel;
  }
-
  char Postulantes::ask_hepatitis_diez(){
    char hepatitis_diez;
    cout<<"¿ Has tenido hepatitis despues de los 10 años ? , si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
@@ -607,7 +596,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    }
    return chagas;
  }
-
  char Postulantes::ask_hormona_cre(){
    char hormona_cre;
    cout<<"¿ has recibido la hormoa de crecimiento antes de 1986 ? , si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
@@ -618,7 +606,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    }
    return hormona_cre;
  }
-
  char Postulantes::ask_hemofilico(){
    char hemofilico;
    cout<<"¿ Eres hemofilico, hemodializado o has recibido injertos de meninges o cornea ? , si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
@@ -629,7 +616,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    }
    return hemofilico;
  }
-
  char Postulantes::ask_drogas_inyectable(){
    char drogas_inyectable;
    cout<<"¿ Has tenido  adiccion a drogas inyectables en algun momento de tu vida ? , si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
@@ -640,7 +626,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    }
    return drogas_inyectable;
  }
-
  char Postulantes::ask_sida_posi(){
    char sida_posi;
    cout<<"¿ Tienes sida o alguna vez has tenido algun resultado positivo para sida? , si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
@@ -651,7 +636,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    }
    return sida_posi;
  }
-
  char Postulantes::ask_paludismo(){
    char paludismo;
    cout<<"¿ Has tenido paludismo o recibido medicamentos antipaludicos en forma preventiva en los ultimos tres años o ha estado en el ultimo año en paises donde existe esta enfermadad ? , si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
@@ -662,7 +646,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    }
    return paludismo;
  }
-
  char Postulantes::ask_manifesta_sida(){
    char manifesta_sida;
    cout<<"¿ Presenta manifestaciones clinicas que pueden estar asociadas con sida, como perdida de peso inexplicable, fiebre de mas de diez dias de evolucion o agrandamiento ganglionar ? , si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
@@ -673,7 +656,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    }
    return manifesta_sida;
  }
-
  char Postulantes::ask_dengue(){
    char dengue;
    cout<<"¿ Has estado en los ultimos 30 dias por zonas afectadas por dengue ? , si su respuesta es positiva ingrese (V) de lo contrario ingrese (F):";
@@ -684,7 +666,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    }
    return dengue;
  }
-
  bool Postulantes::impedimientos_definitivos(){
    cout<<"A continuacion responda estas preguntas sobre impedimientos impedimientos_definitivos: "<<endl;
    bool abcTodos=false;
@@ -709,7 +690,6 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    cout<<endl;
    return abcTodos;
  }
-
  bool Postulantes::aceptado(){
    bool resultado=false;
    Examenfisico = examenfisico();
@@ -725,14 +705,44 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    if(resultado==true){
       cout<<"!FELICIDADES¡ la persona puede donar, continue"<<endl;
       Aceptado=true;
+      //anade(this,datos_imp);
    }else{
      cout<<"Lastimosamente no puede donar. cuidese"<<endl;
      Aceptado=false;
    }
    return resultado;
  }
-
+ vector<Postulantes> Postulantes::anade(Postulantes x, vector<Postulantes> &b){
+     if (x.Aceptado==true){
+       b.push_back(x);
+   }
+   return b;
+ }
 
  ostream & operator<<(ostream &os,Postulantes &p){
-   return os<<"nombre: "<<p.Nombre<<'\n'<<"edad: "<<p.Edad<<'\n'<<"grupo S: "<<p.GrupoSanguineo<<'\n'<<"rh: "<<p.Rh<<'\n'<<"peso: "<<p.Peso<<'\n'<<"sexo: "<<p.Sexo<<endl;
+   return os<<"nombre: "<<p.Nombre<<'\n'<<"edad: "<<p.Edad<<'\n'<<"grupo S: "<<p.GrupoSanguineo<<'\n'<<"rh: "<<p.Rh<<'\n'<<"sexo: "<<p.Sexo<<'\n'<<"Cedula: "<<p.Cedula<<'\n'<<"Correo: "<<p.Correo<<'\n'<<"Telefono: "<<p.Telefono<<'\n'<<"-------------------"<<endl;
  }
+Receptores::Receptores(string gs, char rh, string cedula,List<Postulantes> listt){
+  GrupoSanguineo = gs;
+  Rh = rh;
+  Cedula = cedula;
+  listt.push_back(*this);
+}
+Postulantes Receptores:: Search(Receptores mio, vector<Postulantes> base){
+  if(mio.GrupoSanguineo == "o" || mio.GrupoSanguineo == "O"){
+    for(int i = 0; i <base.size();i++){
+      if(base[i].GrupoSanguineo == "o" || base[i].GrupoSanguineo == "O"){
+        if(mio.Rh == '-'){
+          if(base[i].Rh == '-'){
+            return base[i];
+          }else{
+            
+          }
+        }
+      }
+    }
+  }
+}
+ostream & operator<<(ostream &os,Receptores &p){
+  return os<<"Grupo Sanguineo: "<<p.GrupoSanguineo<<'\n'<<"RH: "<<p.RH<<'\n'<<"Cedula: "<<p.Cedula<<'\n'<<"---------------"<<'/n';
+}
