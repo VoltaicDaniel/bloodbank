@@ -30,7 +30,7 @@ public:
   int Temperatura;
   double Hemoglobina;
   int Hematocrito;
-  char Sentir;;
+  char Sentir;
   char Edadpeso;
   int Plaquetas;
   bool Donacion;
@@ -80,7 +80,7 @@ public:
 
 
   //constructores
-
+  Postulantes(string name,int edad,char ola,char a,char b,string c,string d,string e,bool f);
   Postulantes();
 
   //destructores
@@ -158,4 +158,5 @@ public:
 
 };
 ostream & operator<<(ostream &os,Postulantes &p);
+
 #endif

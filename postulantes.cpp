@@ -1,6 +1,5 @@
 #include "postulantes.hpp"
 
-
 Postulantes:: Postulantes(){
   Nombre = ask_name();
   Edad = ask_age();
@@ -10,6 +9,18 @@ Postulantes:: Postulantes(){
   Cedula = ask_cedula();
   Correo = ask_correo();
   Telefono = ask_telefono();
+  Aceptado = aceptado();
+}
+Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,string d,string e,bool f){
+  Nombre = name;
+  Edad = edad;
+  GrupoSanguineo = ola;
+  Rh = a;
+  Sexo = b;
+  Cedula = c;
+  Correo = d;
+  Telefono = e;
+  Aceptado = f;
 }
  string Postulantes::ask_name(){
    string nombre;
@@ -713,8 +724,10 @@ Postulantes:: Postulantes(){
    }
    if(resultado==true){
       cout<<"!FELICIDADES¡ la persona puede donar, continue"<<endl;
+      Aceptado=true;
    }else{
-      cout<<"Lastimosamente no puede donar. cuidese"<<endl;
+     cout<<"Lastimosamente no puede donar. cuidese"<<endl;
+     Aceptado=false;
    }
    return resultado;
  }
