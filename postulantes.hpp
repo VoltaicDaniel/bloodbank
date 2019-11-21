@@ -73,12 +73,16 @@ public:
   bool Unyear;
   bool Impedimientos_definitivos;
   bool Aceptado;
+  vector <Postulantes> o;
+  vector <Postulantes> a;
+  vector <Postulantes> b;
+  vector <Postulantes> ab;
   friend ostream &operator<<(ostream &os, Postulantes &p);
 
 
 
   //constructores
-  Postulantes(string name,int edad,char ola,char a,char b,string c,string d,string e,bool f,vector<Postulantes> &vecc);
+  Postulantes(string name,int edad,string grupo ,char rh,char sexo,string cedula ,string corro,string telefono,bool aceptado,vector<Postulantes> &vecc);
   Postulantes();
 
   //destructores
@@ -154,8 +158,10 @@ public:
 
   bool aceptado();
   vector<Postulantes> anade(Postulantes x, vector<Postulantes> &b);
+  void Reclasificacion(vector<Postulantes> Aceptados);
 };
 ostream & operator<<(ostream &os,Postulantes &p);
+
 class Receptores{
 private:
 public:
@@ -163,9 +169,9 @@ public:
   char Rh;
   string Cedula;
   friend ostream &operator<<(ostream &os, Receptores &p);
-  Receptores(string gs, char rh, string cedula,List<Postulantes> listt);
+  Receptores(string gs, char rh, string cedula);
   Postulantes Search(Receptores mio, vector<Postulantes> base);
-}
+};
 
 ostream & operator<<(ostream &os,Receptores &p);
 

@@ -11,16 +11,16 @@ Postulantes:: Postulantes(){
   Telefono = ask_telefono();
   Aceptado = aceptado();
 }
-Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,string d,string e,bool f,vector<Postulantes> &vecc){
+Postulantes:: Postulantes(string name,int edad,string grupo ,char rh,char sexo,string cedula ,string corro,string telefono,bool aceptado,vector<Postulantes> &vecc){
   Nombre = name;
   Edad = edad;
-  GrupoSanguineo = ola;
-  Rh = a;
-  Sexo = b;
-  Cedula = c;
-  Correo = d;
-  Telefono = e;
-  Aceptado = f;
+  GrupoSanguineo = grupo;
+  Rh = rh;
+  Sexo = sexo;
+  Cedula = cedula;
+  Correo = corro;
+  Telefono = telefono;
+  Aceptado = aceptado;
   anade(*this,vecc);
 
 }
@@ -718,31 +718,37 @@ Postulantes:: Postulantes(string name,int edad,char ola,char a,char b,string c,s
    }
    return b;
  }
+void Postulantes::Reclasificacion(vector<Postulantes> Aceptados){
+  while(!Aceptados.empty()){
 
+    if(Aceptados[Aceptados.size()-1].GrupoSanguineo == "a" ||Aceptados[Aceptados.size()-1].GrupoSanguineo == "A")
+      a.push_back(Aceptados[Aceptados.size()-1]);
+    else if(Aceptados[Aceptados.size()-1].GrupoSanguineo == "o" ||Aceptados[Aceptados.size()-1].GrupoSanguineo == "O")
+      o.push_back(Aceptados[Aceptados.size()-1]);
+    else if(Aceptados[Aceptados.size()-1].GrupoSanguineo == "b" ||Aceptados[Aceptados.size()-1].GrupoSanguineo == "B")
+      b.push_back(Aceptados[Aceptados.size()-1]);
+    else
+      ab.push_back(Aceptados[Aceptados.size()-1]);
+
+    Aceptados.pop_back();
+  }
+}
  ostream & operator<<(ostream &os,Postulantes &p){
    return os<<"nombre: "<<p.Nombre<<'\n'<<"edad: "<<p.Edad<<'\n'<<"grupo S: "<<p.GrupoSanguineo<<'\n'<<"rh: "<<p.Rh<<'\n'<<"sexo: "<<p.Sexo<<'\n'<<"Cedula: "<<p.Cedula<<'\n'<<"Correo: "<<p.Correo<<'\n'<<"Telefono: "<<p.Telefono<<'\n'<<"-------------------"<<endl;
  }
-Receptores::Receptores(string gs, char rh, string cedula,List<Postulantes> listt){
+
+// Comienza la implementacion de la segunda clase de Receptores
+
+Receptores::Receptores(string gs, char rh, string cedula){
   GrupoSanguineo = gs;
   Rh = rh;
   Cedula = cedula;
-  listt.push_back(*this);
 }
-Postulantes Receptores:: Search(Receptores mio, vector<Postulantes> base){
-  if(mio.GrupoSanguineo == "o" || mio.GrupoSanguineo == "O"){
-    for(int i = 0; i <base.size();i++){
-      if(base[i].GrupoSanguineo == "o" || base[i].GrupoSanguineo == "O"){
-        if(mio.Rh == '-'){
-          if(base[i].Rh == '-'){
-            return base[i];
-          }else{
-            
-          }
-        }
-      }
-    }
-  }
-}
+// Postulantes Receptores:: Search(Receptores mio, vector<Postulantes> base){
+//   if(mio.GrupoSanguineo == "o" || mio.GrupoSanguineo == "O"){
+//
+//   }
+//}
 ostream & operator<<(ostream &os,Receptores &p){
-  return os<<"Grupo Sanguineo: "<<p.GrupoSanguineo<<'\n'<<"RH: "<<p.RH<<'\n'<<"Cedula: "<<p.Cedula<<'\n'<<"---------------"<<'/n';
+  return os<<"Grupo Sanguineo: "<<p.GrupoSanguineo<<'\n'<<"RH: "<<p.Rh<<'\n'<<"Cedula: "<<p.Cedula<<'\n'<<"---------------"<<'\n';
 }
