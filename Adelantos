@@ -1,0 +1,4 @@
+Adicione una parte de la funcion en donde busca los donantes a partir de los receptores, hice solo un caso, sin embargo los otros cassos son muy parecidos
+tambien hice una funcion que clasificara  a los receptores por su grupo sanguineo, aunque por el momento no se sta utilizando para nada.
+se creo un vector de "mis donntes " en el cual si quiero buscar mis donantes y soy un tipo a, entonces los donates que me pueden donar estan ahi.
+La funcion search retorna un bool porque quiero saber si hay o no hay, no retorna un postulante porque en el caso en el cual yo quiera un donante pues si saco solo uno, ese puede estar en brasil, por ejemplo pero resulta quehay otro en el cual esta en barranquilla, pero ese no o saco, por ese caso retorna un bool
