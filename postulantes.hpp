@@ -158,19 +158,27 @@ public:
 
   bool aceptado();
   vector<Postulantes> anade(Postulantes x, vector<Postulantes> &b);
-  void Reclasificacion(vector<Postulantes> Aceptados);
+  void clasificacion(vector<Postulantes> Aceptados);
 };
 ostream & operator<<(ostream &os,Postulantes &p);
-
+// -----------------------------------------------------------------//
+// comienza la calse de Receptores //
 class Receptores{
 private:
 public:
   string GrupoSanguineo;
   char Rh;
   string Cedula;
+  vector <Receptores> o;
+  vector <Receptores> a;
+  vector <Receptores> b;
+  vector <Receptores> ab;
+  vector <Postulantes> Mis_Donantes;
   friend ostream &operator<<(ostream &os, Receptores &p);
-  Receptores(string gs, char rh, string cedula);
-  Postulantes Search(Receptores mio, vector<Postulantes> base);
+  Receptores(string gs, char rh, string cedula,vector<Receptores>&Requeridos);
+  void clasificacion(vector<Receptores> Requeridos);
+  bool Search(Receptores& mio, Postulantes Donante);
+  bool Search(vector<Postulantes> base);
 };
 
 ostream & operator<<(ostream &os,Receptores &p);

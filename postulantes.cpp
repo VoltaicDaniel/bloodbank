@@ -30,7 +30,6 @@ Postulantes:: Postulantes(string name,int edad,string grupo ,char rh,char sexo,s
    cin>>nombre;
    return nombre;
  }
-
  int Postulantes::ask_age(){
    int edad=0;
    cout<<"ingrese su edad:";
@@ -60,7 +59,6 @@ Postulantes:: Postulantes(string name,int edad,string grupo ,char rh,char sexo,s
    }
    return gs;
  }
-
  char Postulantes::ask_rh(){
    char rh;
    cout<<"Ingrese su rh(+/-) : ";
@@ -82,42 +80,36 @@ Postulantes:: Postulantes(string name,int edad,string grupo ,char rh,char sexo,s
    }
    return sexo;
  }
-
  int Postulantes::ask_peso(){
    int peso;
    cout<<"Ingrese su peso en kg: ";
    cin >> peso;
    return peso;
  }
-
  string Postulantes::ask_cedula(){
    string cedula;
    cout<<"ingrese su cedula:";
    cin >> cedula;
    return cedula;
  }
-
  string Postulantes::ask_correo(){
    string correo;
    cout<<"ingrese su correo electronico:";
    cin >> correo;
    return correo;
  }
-
  string Postulantes::ask_telefono(){
    string telefono;
    cout<<"ingrese su numero de telefono:";
    cin >> telefono;
    return telefono;
  }
-
  string Postulantes::ask_direccion(){
    string direccion;
    cout<<"ingrese su direccion(pais/ciudad/barrio/calle/carrera):";
    cin >> direccion;
    return direccion;
  }
-
  bool Postulantes::examenfisico(){
    bool x;
    cout<<"por favor ingrese estos datos con ayuda del medico asignado: "<<endl;
@@ -149,35 +141,30 @@ Postulantes:: Postulantes(string name,int edad,string grupo ,char rh,char sexo,s
    cout<<endl;
    return x;
  }
-
  int Postulantes::ask_tensionarterial_sistolica(){
    int tension;
    cout<<"Ingrese la tension arterial sistolica  del postulante(MmHg) : ";
    cin >> tension;
    return tension;
  }
-
  int Postulantes::ask_tensionarterial_diastolica(){
    int tension1;
    cout<<"Ingrese la tension arterial diastolica  del postulante(MmHg) : ";
    cin >> tension1;
    return tension1;
  }
-
  int Postulantes::ask_pulso(){
    int pulso;
    cout<<"Ingrese el pulso del postulante : ";
    cin >> pulso;
    return pulso;
  }
-
  int Postulantes::ask_temperatura(){
    int temperatura;
    cout<<"Ingrese la temperatura del postulante(°C) : ";
    cin >> temperatura;
    return temperatura;
  }
-
  double Postulantes::ask_hemoglobina(){
    double hemoglobina;
    cout<<"Ingrese la hemoglobina del postulante(gr/dl) : ";
@@ -232,7 +219,6 @@ Postulantes:: Postulantes(string name,int edad,string grupo ,char rh,char sexo,s
    }
    return sentir;
  }
-
  char Postulantes::ask_edadpeso(){
    char edadpeso='f';
 
@@ -244,7 +230,6 @@ Postulantes:: Postulantes(string name,int edad,string grupo ,char rh,char sexo,s
    }
    return edadpeso;
  }
-
  bool Postulantes::condiciones_generales(){
    bool xx=false;
    Vacunas = ask_vacunas();
@@ -263,7 +248,6 @@ Postulantes:: Postulantes(string name,int edad,string grupo ,char rh,char sexo,s
    cout<<endl;
    return xx;
  }
-
  bool Postulantes::impedimientos(){
    bool xy=false;
    Enfermedades_cardiacas = ask_enfermedades_cardiacas();
@@ -718,37 +702,65 @@ Postulantes:: Postulantes(string name,int edad,string grupo ,char rh,char sexo,s
    }
    return b;
  }
-void Postulantes::Reclasificacion(vector<Postulantes> Aceptados){
-  while(!Aceptados.empty()){
-
-    if(Aceptados[Aceptados.size()-1].GrupoSanguineo == "a" ||Aceptados[Aceptados.size()-1].GrupoSanguineo == "A")
-      a.push_back(Aceptados[Aceptados.size()-1]);
-    else if(Aceptados[Aceptados.size()-1].GrupoSanguineo == "o" ||Aceptados[Aceptados.size()-1].GrupoSanguineo == "O")
-      o.push_back(Aceptados[Aceptados.size()-1]);
-    else if(Aceptados[Aceptados.size()-1].GrupoSanguineo == "b" ||Aceptados[Aceptados.size()-1].GrupoSanguineo == "B")
-      b.push_back(Aceptados[Aceptados.size()-1]);
-    else
-      ab.push_back(Aceptados[Aceptados.size()-1]);
-
-    Aceptados.pop_back();
+void Postulantes::clasificacion(vector<Postulantes> Aceptados){
+  cout<<"el size de la base de datos es : "<<Aceptados.size()<<'\n';
+  for(unsigned int i = 0 ; i<Aceptados.size();i++){
+    if(Aceptados[i].GrupoSanguineo == "a" ||Aceptados[i].GrupoSanguineo == "A")
+      a.push_back(Aceptados[i]);
+    else if(Aceptados[i].GrupoSanguineo == "o" ||Aceptados[i].GrupoSanguineo == "O")
+      o.push_back(Aceptados[i]);
+    else if(Aceptados[i].GrupoSanguineo == "b" ||Aceptados[i].GrupoSanguineo == "B")
+      b.push_back(Aceptados[i]);
+    else{
+      ab.push_back(Aceptados[i]);
+    }
   }
 }
  ostream & operator<<(ostream &os,Postulantes &p){
    return os<<"nombre: "<<p.Nombre<<'\n'<<"edad: "<<p.Edad<<'\n'<<"grupo S: "<<p.GrupoSanguineo<<'\n'<<"rh: "<<p.Rh<<'\n'<<"sexo: "<<p.Sexo<<'\n'<<"Cedula: "<<p.Cedula<<'\n'<<"Correo: "<<p.Correo<<'\n'<<"Telefono: "<<p.Telefono<<'\n'<<"-------------------"<<endl;
  }
-
+ // ------------------------------------------------------------------------------------------------------------//
 // Comienza la implementacion de la segunda clase de Receptores
-
-Receptores::Receptores(string gs, char rh, string cedula){
+Receptores::Receptores(string gs, char rh, string cedula,vector<Receptores>&Requeridos){
   GrupoSanguineo = gs;
   Rh = rh;
   Cedula = cedula;
+  Requeridos.push_back(*this);
 }
-// Postulantes Receptores:: Search(Receptores mio, vector<Postulantes> base){
-//   if(mio.GrupoSanguineo == "o" || mio.GrupoSanguineo == "O"){
-//
-//   }
-//}
+void Receptores::clasificacion(vector<Receptores> Requeridos){
+  while(!Requeridos.empty()){
+    if(Requeridos[Requeridos.size()-1].GrupoSanguineo == "a" ||Requeridos[Requeridos.size()-1].GrupoSanguineo == "A")
+      a.push_back(Requeridos[Requeridos.size()-1]);
+    else if(Requeridos[Requeridos.size()-1].GrupoSanguineo == "o" ||Requeridos[Requeridos.size()-1].GrupoSanguineo == "O")
+      o.push_back(Requeridos[Requeridos.size()-1]);
+    else if(Requeridos[Requeridos.size()-1].GrupoSanguineo == "b" ||Requeridos[Requeridos.size()-1].GrupoSanguineo == "B")
+      b.push_back(Requeridos[Requeridos.size()-1]);
+    else
+      ab.push_back(Requeridos[Requeridos.size()-1]);
+    Requeridos.pop_back();
+  }
+}
+bool Receptores::Search(Receptores& mio,Postulantes Donante){
+  if ((mio.GrupoSanguineo == "a" || mio.GrupoSanguineo == "A") &&(mio.Rh == '+')){
+    if(Donante.a.size() != 0 || Donante.o.size() != 0){
+      for(unsigned int i = 0; i<Donante.a.size(); i++){
+       mio.Mis_Donantes.push_back(Donante.a[i]);
+      }
+      for(unsigned int i = 0; i<Donante.o.size(); i++){
+        mio.Mis_Donantes.push_back(Donante.o[i]);
+      }
+      return true;
+    }
+  else{
+    return false;
+     }
+  }
+  return 0;
+}
+
+bool Receptores:: Search(vector<Postulantes>base){
+  return Search(*this,base[0]);
+}
 ostream & operator<<(ostream &os,Receptores &p){
   return os<<"Grupo Sanguineo: "<<p.GrupoSanguineo<<'\n'<<"RH: "<<p.Rh<<'\n'<<"Cedula: "<<p.Cedula<<'\n'<<"---------------"<<'\n';
 }
