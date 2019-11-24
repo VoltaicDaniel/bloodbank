@@ -740,26 +740,112 @@ void Receptores::clasificacion(vector<Receptores> Requeridos){
     Requeridos.pop_back();
   }
 }
-bool Receptores::Search(Receptores& mio,Postulantes Donante){
-  if ((mio.GrupoSanguineo == "a" || mio.GrupoSanguineo == "A") &&(mio.Rh == '+')){
+bool Receptores::Search(Postulantes Donante){
+  if (GrupoSanguineo == "a" || GrupoSanguineo == "A"){
     if(Donante.a.size() != 0 || Donante.o.size() != 0){
-      for(unsigned int i = 0; i<Donante.a.size(); i++){
-       mio.Mis_Donantes.push_back(Donante.a[i]);
+      if(Rh == '+'){
+        for(unsigned int i = 0; i<Donante.a.size(); i++){
+         Mis_Donantes.push_back(Donante.a[i]);
+        }
+        for(unsigned int i = 0; i<Donante.o.size(); i++){
+          Mis_Donantes.push_back(Donante.o[i]);
+        }
+      }else{
+        for(unsigned int i=0; i < Donante.a.size();i++){
+          if(Donante.a[i].Rh == '-'){
+            Mis_Donantes.push_back(Donante.a[i]);
+          }
+        }
+        for (unsigned int i=0; i<Donante.o.size();i++){
+          if(Donante.o[i].Rh == '-'){
+            Mis_Donantes.push_back(Donante.o[i]);
+          }
+        }
       }
-      for(unsigned int i = 0; i<Donante.o.size(); i++){
-        mio.Mis_Donantes.push_back(Donante.o[i]);
+    }}else if(GrupoSanguineo == "o" || GrupoSanguineo == "O"){
+      if(Donante.o.size() != 0){
+        if(Rh == '+'){
+          for(unsigned int i=0; i<Donante.o.size();i++){
+            Mis_Donantes.push_back(Donante.o[i]);
+          }
+        }else{
+          for(unsigned int i =0; i<Donante.o.size();i++){
+            if(Donante.o[i].Rh == '-'){
+              Mis_Donantes.push_back(Donante.o[i]);
+            }
+          }
+        }
       }
-      return true;
+  }else if(GrupoSanguineo == "b" || GrupoSanguineo == "B"){
+    if(Donante.o.size() != 0 || Donante.b.size() != 0){
+        if(Rh == '+'){
+          for (unsigned int i=0; i< Donante.o.size();i++){
+            Mis_Donantes.push_back(Donante.o[i]);
+          }
+          for(unsigned int i=0; i<Donante.b.size();i++){
+            Mis_Donantes.push_back(Donante.b[i]);
+          }
+        }else{
+          for(unsigned int i =0; i < Donante.o.size();i++){
+            if(Donante.o[i].Rh == '-'){
+              Mis_Donantes.push_back(Donante.o[i]);
+            }
+          }
+          for(unsigned int i =0;i< Donante.b.size();i++){
+            if(Donante.b[i].Rh == '-'){
+              Mis_Donantes.push_back(Donante.b[i]);
+            }
+          }
+        }
     }
-  else{
-    return false;
-     }
+  }else if(GrupoSanguineo == "ab" || GrupoSanguineo == "AB"){
+      if(Donante.o.size() != 0 || Donante.a.size() != 0 || Donante.b.size() != 0 || Donante.ab.size() != 0){
+        if(Rh == '+'){
+          for(unsigned int i =0; i< Donante.o.size();i++){
+            Mis_Donantes.push_back(Donante.o[i]);
+          }
+          for (unsigned int i =0; i < Donante.a.size();i++){
+            Mis_Donantes.push_back(Donante.a[i]);
+          }
+          for(unsigned int i =0;i < Donante.b.size(); i++){
+            Mis_Donantes.push_back(Donante.b[i]);
+          }
+          for(unsigned int i =0; i< Donante.ab.size();i++){
+            Mis_Donantes.push_back(Donante.ab[i]);
+          }
+        }else{
+          for(unsigned int i =0; i< Donante.o.size();i++){
+            if(Donante.o[i].Rh == '-'){
+              Mis_Donantes.push_back(Donante.o[i]);
+            }
+          }
+          for(unsigned int i =0; i< Donante.a.size();i++){
+            if(Donante.a[i].Rh == '-'){
+              Mis_Donantes.push_back(Donante.a[i]);
+            }
+          }
+          for(unsigned int i =0; i< Donante.b.size();i++){
+            if(Donante.b[i].Rh == '-'){
+              Mis_Donantes.push_back(Donante.b[i]);
+            }
+        }
+        for(unsigned int i =0; i< Donante.ab.size();i++){
+          if(Donante.ab[i].Rh == '-'){
+            Mis_Donantes.push_back(Donante.ab[i]);
+          }
+      }
   }
-  return 0;
+}
+}
+  if(Mis_Donantes.empty()){
+    return false;
+  }else{
+    return true;
+  }
 }
 
 bool Receptores:: Search(vector<Postulantes>base){
-  return Search(*this,base[0]);
+  return Search(base[0]);
 }
 ostream & operator<<(ostream &os,Receptores &p){
   return os<<"Grupo Sanguineo: "<<p.GrupoSanguineo<<'\n'<<"RH: "<<p.Rh<<'\n'<<"Cedula: "<<p.Cedula<<'\n'<<"---------------"<<'\n';

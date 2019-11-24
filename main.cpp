@@ -20,14 +20,14 @@ int main() {
   Receptores Receptor2("ab",'-',"1000146047",Requeridos);
   Receptores Receptor3("b",'+',"1000146047",Requeridos);
   Receptores Receptor4("b",'-',"1000146047",Requeridos);
-  Receptores Receptor5("a",'+',"1000146047",Requeridos);
+  Receptores Receptor5("a",'-',"1000146047",Requeridos);
   Receptores Receptor6("a",'-',"1000146047",Requeridos);
   Receptores Receptor7("o",'+',"1000146047",Requeridos);
   Receptores Receptor8("o",'-',"1000146047",Requeridos);
   Receptor1.clasificacion(Requeridos);
-  cout<<Receptor5.Search(Receptor5,Postulante1)<<'\n';
-  for(unsigned int i = 0; i< Receptor5.Mis_Donantes.size();i++){
-    cout<<"Un posible donante para el Receptor No 5 es;"<<Receptor5.Mis_Donantes[i]<<'\n';
+  cout<<Receptor7.Search(Postulante1)<<'\n';
+  for(unsigned int i = 0; i< Receptor7.Mis_Donantes.size();i++){
+    cout<<"Un posible donante para el Receptor No 8 es;"<<Receptor7.Mis_Donantes[i]<<'\n';
   }
    return 0;
  }

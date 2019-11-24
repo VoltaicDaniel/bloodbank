@@ -177,7 +177,7 @@ public:
   friend ostream &operator<<(ostream &os, Receptores &p);
   Receptores(string gs, char rh, string cedula,vector<Receptores>&Requeridos);
   void clasificacion(vector<Receptores> Requeridos);
-  bool Search(Receptores& mio, Postulantes Donante);
+  bool Search(Postulantes Donante);
   bool Search(vector<Postulantes> base);
 };
 
