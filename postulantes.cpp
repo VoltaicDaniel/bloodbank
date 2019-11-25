@@ -34,7 +34,7 @@ Postulantes:: Postulantes(string name,int edad,string grupo ,char rh,char sexo,s
  int Postulantes::ask_age(){
    int edad=0;
    cout<<"ingrese su edad:";
-   getline(cin, edad);
+   cin>>edad;
    return edad;
  }
  string Postulantes::ask_gs(){
