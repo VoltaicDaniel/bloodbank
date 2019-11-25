@@ -28,20 +28,20 @@ Postulantes:: Postulantes(string name,int edad,string grupo ,char rh,char sexo,s
  string Postulantes::ask_name(){
    string nombre;
    cout<<"Ingrese su nombre aqui: ";
-   cin>>nombre;
+   getline(cin, nombre);
    return nombre;
  }
  int Postulantes::ask_age(){
    int edad=0;
    cout<<"ingrese su edad:";
-   cin >> edad;
+   getline(cin, edad);
    return edad;
  }
  string Postulantes::ask_gs(){
    string gs;
    string s= "";
    cout<<"Ingrese su grupo sanguineo(O,A,B,AB): ";
-   cin>> gs;
+   getline(cin, gs);
    for(unsigned int  i=0; i<gs.size();i++){
        s += toupper(gs[i]);
    }
@@ -50,7 +50,7 @@ Postulantes:: Postulantes(string name,int edad,string grupo ,char rh,char sexo,s
    s="";
    while (gs != "O" && gs != "A" && gs != "B" && gs != "AB"){
      cout<< " El Grupo Sanguineo no es valido, por favor elija entre O,A,B,AB: " ;
-     cin>> gs;
+     getline(cin, gs);
      for(unsigned int  i=0; i<gs.size();i++){
          s += toupper(gs[i]);
      }
@@ -90,25 +90,25 @@ Postulantes:: Postulantes(string name,int edad,string grupo ,char rh,char sexo,s
  string Postulantes::ask_cedula(){
    string cedula;
    cout<<"ingrese su cedula:";
-   cin >> cedula;
+   getline(cin, cedula);
    return cedula;
  }
  string Postulantes::ask_correo(){
    string correo;
    cout<<"ingrese su correo electronico:";
-   cin >> correo;
+   getline(cin, correo);
    return correo;
  }
  string Postulantes::ask_telefono(){
    string telefono;
    cout<<"ingrese su numero de telefono:";
-   cin >> telefono;
+   getline(cin, telefono);
    return telefono;
  }
  string Postulantes::ask_direccion(){
    string direccion;
    cout<<"ingrese su direccion(pais/ciudad/barrio/calle/carrera):";
-   cin >> direccion;
+   getline(cin, direccion);
    return direccion;
  }
  bool Postulantes::examenfisico(){
