@@ -1,6 +1,6 @@
 #include "postulantes.hpp"
 
-Postulantes:: Postulantes(){
+Postulantes:: Postulantes(vector<Postulantes> &vecc){
   Nombre = ask_name();
   Edad = ask_age();
   GrupoSanguineo =ask_gs();
@@ -10,6 +10,7 @@ Postulantes:: Postulantes(){
   Correo = ask_correo();
   Telefono = ask_telefono();
   Aceptado = aceptado();
+  anade(*this,vecc);
 }
 Postulantes:: Postulantes(string name,int edad,string grupo ,char rh,char sexo,string cedula ,string corro,string telefono,bool aceptado,vector<Postulantes> &vecc){
   Nombre = name;
