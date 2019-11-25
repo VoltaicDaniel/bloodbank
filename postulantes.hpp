@@ -83,7 +83,7 @@ public:
 
   //constructores
   Postulantes(string name,int edad,string grupo ,char rh,char sexo,string cedula ,string corro,string telefono,bool aceptado,vector<Postulantes> &vecc);
-  Postulantes();
+  Postulantes(vector<Postulantes> &vecc);
 
   //destructores
   //~postulante();
